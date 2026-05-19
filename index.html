@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoidOS • Void Client</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader-card">
+      <div class="loading-spinner"></div>
+      <h1>Void's PC Client</h1>
+      <p>Initializing the Void Engine...</p>
+    </div>
+  </div>
+
+  <div id="desktop" class="desktop theme-midnight">
+    <div id="desktopWallpaper" class="desktop-wallpaper wallpaper-nebula"></div>
+    <div class="desktop-overlay"></div>
+
+    <main class="home-pane">
+      <section class="hero-card">
+        <div class="hero-title">
+          <div class="moon-spinner">
+            <div class="moon"></div>
+          </div>
+          <h1>Void OS</h1>
+        </div>
+
+        <div class="search-panel">
+          <input id="searchInput" type="search" placeholder="Search Void, krunker, kirka, or enter a URL" autocomplete="off" />
+          <button id="searchButton" class="button primary">Search</button>
+        </div>
+
+        <div class="hero-actions">
+          <button id="gameModeButton" class="button secondary">Game Mode</button>
+          <button id="settingsButton" class="icon-button" title="Settings">⚙</button>
+          <button id="discordButton" class="button secondary">Discord</button>
+        </div>
+      </section>
+
+      <section id="hotbar" class="hotbar">
+        <button data-url="about:blank" class="hotbar-item active">Void Client</button>
+        <button data-url="https://kirka.io" class="hotbar-item">Kirka.io</button>
+        <button data-url="https://krunker.io" class="hotbar-item">Krunker.io</button>
+      </section>
+
+      <section id="gamePanel" class="game-panel hidden">
+        <div class="game-panel-header">
+          <h2>Game Mode</h2>
+          <p>Launch popular web games and mobile-compatible browser titles inside VoidOS.</p>
+        </div>
+        <div id="gameGrid" class="game-grid"></div>
+      </section>
+
+      <section id="browserShell" class="browser-shell">
+        <div class="browser-topbar">
+          <div class="window-controls">
+            <button id="minimizeBtn" title="Minimize">—</button>
+            <button id="toggleFullscreenBtn" title="Fullscreen">⛶</button>
+            <button id="closeBtn" title="Close">×</button>
+          </div>
+          <div class="browser-title">Void Browser Window</div>
+        </div>
+        <div id="browserStatus" class="browser-status">Home page loaded. Use the hotbar or search above.</div>
+        <div class="frame-wrapper">
+          <iframe id="browserFrame" title="Void Client browser" src="about:blank" sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-top-navigation"></iframe>
+        </div>
+      </section>
+
+      <p class="description">VoidOS is a sleek black-purple desktop shell with a built-in web proxy, game mode, hotbar, wallpaper engine, and location controls.</p>
+    </main>
+
+    <div id="taskbar" class="taskbar">
+      <div class="taskbar-left">
+        <button id="homeButton" class="task-button">VoidOS</button>
+        <div class="task-icons">
+          <button data-url="about:blank" class="task-icon active">Home</button>
+          <button data-url="https://kirka.io" class="task-icon">Kirka</button>
+          <button data-url="https://krunker.io" class="task-icon">Krunker</button>
+        </div>
+      </div>
+      <div class="taskbar-right">
+        <span id="locationLabel">Location: Global</span>
+        <span id="adblockLabel">Adblock: On</span>
+        <span id="clockLabel"></span>
+      </div>
+    </div>
+
+    <aside id="settingsPanel" class="settings-panel hidden">
+      <div class="settings-header">
+        <div>
+          <h2>VoidOS Settings</h2>
+          <p>Manage theme, wallpaper, proxy location, adblock, and built-in game mode.</p>
+        </div>
+        <button id="settingsClose" class="icon-button">×</button>
+      </div>
+
+      <div class="settings-group">
+        <h3>Theme Color</h3>
+        <div class="theme-options">
+          <button data-theme="midnight" class="theme-swatch active">Midnight</button>
+          <button data-theme="violet" class="theme-swatch">Violet</button>
+          <button data-theme="indigo" class="theme-swatch">Indigo</button>
+          <button data-theme="teal" class="theme-swatch">Teal</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Wallpaper</h3>
+        <div class="wallpaper-options">
+          <button data-wallpaper="nebula" class="wallpaper-thumb active">Nebula</button>
+          <button data-wallpaper="purple" class="wallpaper-thumb">Purple</button>
+          <button data-wallpaper="grid" class="wallpaper-thumb">Grid</button>
+          <button data-wallpaper="video" class="wallpaper-thumb">Video</button>
+        </div>
+        <div class="upload-row">
+          <label for="wallpaperUpload">Upload custom image or video</label>
+          <input id="wallpaperUpload" type="file" accept="image/*,video/*" />
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Proxy Location</h3>
+        <div class="location-options">
+          <button data-location="Global" class="location-button active">Global</button>
+          <button data-location="Brasil" class="location-button">Brasil</button>
+          <button data-location="USA" class="location-button">USA</button>
+          <button data-location="Africa" class="location-button">Africa</button>
+          <button data-location="Europe" class="location-button">Europe</button>
+          <button data-location="Asia" class="location-button">Asia</button>
+          <button data-location="Canada" class="location-button">Canada</button>
+          <button data-location="Mexico" class="location-button">Mexico</button>
+          <button data-location="UK" class="location-button">UK</button>
+          <button data-location="France" class="location-button">France</button>
+          <button data-location="Germany" class="location-button">Germany</button>
+          <button data-location="Japan" class="location-button">Japan</button>
+          <button data-location="Korea" class="location-button">Korea</button>
+          <button data-location="Australia" class="location-button">Australia</button>
+          <button data-location="India" class="location-button">India</button>
+          <button data-location="Netherlands" class="location-button">Netherlands</button>
+          <button data-location="Sweden" class="location-button">Sweden</button>
+          <button data-location="Singapore" class="location-button">Singapore</button>
+          <button data-location="Russia" class="location-button">Russia</button>
+          <button data-location="UAE" class="location-button">UAE</button>
+        </div>
+      </div>
+
+      <div class="settings-group">
+        <h3>Controls</h3>
+        <div class="toggle-row">
+          <button id="toggleAdblock" class="button secondary">Adblock: On</button>
+          <button id="clearBrowser" class="button secondary">Reset Browser Window</button>
+        </div>
+        <p class="settings-note">Adblocker removes common ad scripts and frames from proxied sites.</p>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

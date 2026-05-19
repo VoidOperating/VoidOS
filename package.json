@@ -1,0 +1,9 @@
+{
+  "name": "voidos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VoidOS black purple proxy-style web desktop shell.",
+  "scripts": {
+    "start": "python3 server.py 8000"
+  }
+}
